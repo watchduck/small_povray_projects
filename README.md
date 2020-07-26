@@ -4,31 +4,34 @@
 <tr>
 <td>
   <a href="https://commons.wikimedia.org/wiki/File:Cube_subspace_2b5.png">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Cube_subspace_2b5.png/130px-Cube_subspace_2b5.png"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Cube_subspace_2b5.png/110px-Cube_subspace_2b5.png"/>
   </a>
+<td>
   <a href="https://commons.wikimedia.org/wiki/File:Cube_subspace_1c3.png">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Cube_subspace_1c3.png/130px-Cube_subspace_1c3.png"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Cube_subspace_1c3.png/110px-Cube_subspace_1c3.png"/>
   </a>
 <td>
   <a href="https://commons.wikimedia.org/wiki/File:Tesseract_subspace_3b11.png">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Tesseract_subspace_3b11.png/120px-Tesseract_subspace_3b11.png"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Tesseract_subspace_3b11.png/100px-Tesseract_subspace_3b11.png"/>
   </a>
+<td>
   <a href="https://commons.wikimedia.org/wiki/File:Tesseract_subspace_2b17.png">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Tesseract_subspace_2b17.png/120px-Tesseract_subspace_2b17.png"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Tesseract_subspace_2b17.png/100px-Tesseract_subspace_2b17.png"/>
   </a>
+<td>
   <a href="https://commons.wikimedia.org/wiki/File:Tesseract_subspace_2b17.png">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Tesseract_subspace_1b11.png/120px-Tesseract_subspace_1b11.png"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Tesseract_subspace_1b11.png/100px-Tesseract_subspace_1b11.png"/>
   </a>
 <td>
   <a href="https://commons.wikimedia.org/wiki/File:Face_lattice_of_the_tesseract.png">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Face_lattice_of_the_tesseract.png/120px-Face_lattice_of_the_tesseract.png"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Face_lattice_of_the_tesseract.png/100px-Face_lattice_of_the_tesseract.png"/>
   </a>
 <tr>
-<td>
+<td colspan="2">
   <a href="https://github.com/watchduck/small_povray_projects/blob/master/projects/hypercube_subspaces/cube/subspaces.pov">
     <code>cube/subspaces.pov</code>
   </a>
-<td>
+<td colspan="3">
   <a href="https://github.com/watchduck/small_povray_projects/blob/master/projects/hypercube_subspaces/tesseract/povray/subspaces.pov">
     <code>tesseract/povray/subspaces.pov</code>
   </a>
