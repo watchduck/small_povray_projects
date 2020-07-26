@@ -75,7 +75,7 @@ for rank in [2, 3]:
 
                         face_center_array = sum_array / len(_face_vertices)
                         face_center_tuple = tuple(face_center_array)
-                        face_center_index = tree_points.index(face_center_tuple)  # something wrong here
+                        face_center_index = tree_points.index(face_center_tuple)  # something wrong here (at least in Sage 9.1, initially written for 8.1)
                         face_weight = tree_point_weights[face_center_index]
 
                     if dim == 1:
