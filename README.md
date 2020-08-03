@@ -19,7 +19,7 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Tesseract_subspace_2b17.png/100px-Tesseract_subspace_2b17.png"/>
   </a>
 <td>
-  <a href="https://commons.wikimedia.org/wiki/File:Tesseract_subspace_2b17.png">
+  <a href="https://commons.wikimedia.org/wiki/File:Tesseract_subspace_1b11.png">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Tesseract_subspace_1b11.png/100px-Tesseract_subspace_1b11.png"/>
   </a>
 <td>
