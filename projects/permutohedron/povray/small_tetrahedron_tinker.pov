@@ -5,8 +5,13 @@ global_settings { assumed_gamma 1.0 }
 #include "colors.inc"
 
 
-// povray small_tetrahedron.pov +W2835 +H3000 +ua +fn
-// https://commons.wikimedia.org/wiki/File:Tetrahedron_with_colored_edges,_labeled.png
+/*
+povray small_tetrahedron.pov +W3000 +H3000 +ua +fn
+
+cropped with
+267 144
+2631 2859
+*/
 
 
 ////////////////////// camera and light
@@ -15,8 +20,8 @@ global_settings { assumed_gamma 1.0 }
 camera{
     location Camera_Position
     right    x*image_width/image_height
-    angle    11.7
-    look_at  <.09, -.12, 0>
+    angle    13
+    look_at  <0, 0, 0>
 }
 
 
@@ -51,15 +56,18 @@ union{
     cylinder{ Points[0], Points[3], EdgeRadius   pigment{color srgb<255,156,255>/255} }   // light red
     cylinder{ Points[1], Points[2], EdgeRadius   pigment{color srgb<170,247,245>/255} }   // light blue
 
-    sphere{ <-1,0,0>, VertexRadius   pigment{color srgb<234,171,55>/255} }   // orange
-    sphere{ <1,0,0>,  VertexRadius   pigment{color srgb<0,229,0>/255} }      // green
-    sphere{ <0,1,0>,  VertexRadius   pigment{color srgb<0,0,255>/255} }   // blue
-    sphere{ <0,-1,0>, VertexRadius   pigment{color srgb<255,0,0>/255} }   // red
-    sphere{ <0,0,-1>, VertexRadius   pigment{color srgb<255,156,255>/255} }   // light red
-    sphere{ <0,0,1>,  VertexRadius   pigment{color srgb<170,247,245>/255} }   // light blue
+    sphere{ <-1,0,0>, VertexRadius*.7   pigment{color srgb<234,171,55>/255} }   // orange
+    sphere{ <1,0,0>,  VertexRadius*.7   pigment{color srgb<0,229,0>/255} }      // green
+    sphere{ <0,1,0>,  VertexRadius*.7   pigment{color srgb<0,0,255>/255} }   // blue
+    sphere{ <0,-1,0>, VertexRadius*.7   pigment{color srgb<255,0,0>/255} }   // red
+    sphere{ <0,0,-1>, VertexRadius*.7   pigment{color srgb<255,156,255>/255} }   // light red
+    sphere{ <0,0,1>,  VertexRadius*.7   pigment{color srgb<170,247,245>/255} }   // light blue
+	
+	sphere{ <0,0,0>,  VertexRadius*.3   pigment{color rgb .95} }   // white center
 
     rotate -1 * z
 
-	//scale <-1, -1, -1>
+	scale <-1, -1, -1>
 
 }
+

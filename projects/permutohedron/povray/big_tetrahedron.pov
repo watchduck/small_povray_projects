@@ -5,8 +5,14 @@ global_settings { assumed_gamma 1.0 }
 #include "colors.inc"
 
 
-// povray big_tetrahedron.pov +W3740 +H4000 +ua +fn
-// https://commons.wikimedia.org/wiki/File:Permutohedron_in_simplex_of_order_4,_with_truncated_tetrahedron.png
+/*
+povray big_tetrahedron_2.pov +W3740 +H4000 +ua +fn
+https://commons.wikimedia.org/wiki/File:Permutohedron_in_simplex_of_order_4,_with_truncated_tetrahedron.png
+*/
+
+
+#declare ShowBrownEdges = 0;
+#declare PermOneBased = 0;
 
 
 ////////////////////// camera and light
@@ -115,14 +121,15 @@ union{
         pigment{color rgb .07}
     }
 
-    union{
-        #for( Index, 0, 17 )
-            #local EdgeArray = TruncTetraEdges[Index];
-            cylinder{ TruncTetraPoints[EdgeArray[0]], TruncTetraPoints[EdgeArray[1]], .04 }
-        #end
-        pigment{color srgb<165,104,42>/255}
-    }
-
+	#if (ShowBrownEdges)
+		union{
+		    #for( Index, 0, 17 )
+		        #local EdgeArray = TruncTetraEdges[Index];
+		        cylinder{ TruncTetraPoints[EdgeArray[0]], TruncTetraPoints[EdgeArray[1]], .04 }
+		    #end
+		    pigment{color srgb<165,104,42>/255}
+		}
+	#end
 
     // faces
     union{
@@ -142,10 +149,11 @@ union{
     // text
     #for( PointIndex, 0, 83 )
         #for( DigitIndex, 0, 3 )
+			#declare DigitInt = Coordinates[PointIndex][DigitIndex] + PermOneBased;
             union{
                 #declare Text = text {
                     ttf "/usr/share/fonts/truetype/msttcorefonts/Arial_Bold.ttf",
-                    str(Coordinates[PointIndex][DigitIndex], 0, 0) ,  0.075, 0
+                    str(DigitInt, 0, 0) ,  0.075, 0
                     scale TextScale  translate TextTranslate
                     translate DigitIndex * .07 * x
                 }
