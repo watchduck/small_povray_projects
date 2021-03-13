@@ -134,11 +134,11 @@ Image set [Hexadecachoric group; lattice](https://commons.wikimedia.org/wiki/Cat
 <tr>
 <td>
   <a href="projects/four_spheres/rings_colored.inc">
-    <code>plain_tess.pov</code>
+    <code>rings_colored.inc</code>
   </a>
 <td colspan="2">
   <a href="projects/four_spheres/cells.inc">
-    <code>plain_tess.pov</code>
+    <code>cells.inc</code>
   </a>
 </table>
 
