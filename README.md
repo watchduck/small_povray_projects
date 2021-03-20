@@ -147,3 +147,28 @@ Image set [Hexadecachoric group; lattice](https://commons.wikimedia.org/wiki/Cat
 </table>
 
 Image set [Venn spheres rgby](https://commons.wikimedia.org/wiki/Category:Venn_spheres_rgby)
+
+### [`related`](projects/four_spheres/related)
+
+<table>
+<tr>
+<td>
+  <a href="https://commons.wikimedia.org/wiki/File:Tesseract_Schlegel_rgby.png">
+    <img src="img/Tesseract_Schlegel_rgby.png"/>
+  </a>
+<td>
+  <a href="https://commons.wikimedia.org/wiki/File:Tesseract_torus.png">
+    <img src="img/Tesseract_torus.png"/>
+  </a>
+<tr>
+<td>
+  <a href="projects/four_spheres/related/tesseract.inc">
+    <code>tesseract.inc</code>
+  </a>
+<td>
+  <a href="projects/four_spheres/related/torus.inc">
+    <code>torus.inc</code>
+  </a>
+</table>
+
+Image set [Tesseract torus rgby](https://commons.wikimedia.org/wiki/Category:Tesseract torus rgby)
