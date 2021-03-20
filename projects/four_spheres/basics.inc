@@ -1,9 +1,13 @@
+#include "finish.inc"
+
 #include "cases.inc"
 
 
 ////////////////////// variables
 
 #declare Radius = 2.3;
+
+#declare BeamWidth = .17;
 
 // `GapWidth` comes from `cases.inc`
 #declare GapOffset = GapWidth / 2;
@@ -13,21 +17,29 @@
 
 #declare LightGray = pigment{color srgb .9};
 
-#declare dark0 = pigment{color srgb <219,0,0>/255}    // DB0000 red
-#declare dark1 = pigment{color srgb <0,211,0>/255}    // 00D300 green
-#declare dark2 = pigment{color srgb <0,48,255>/255}   // 0030FF blue
-#declare dark3 = pigment{color srgb <255,158,0>/255}  // FF9E00 yellow
+#declare Dark0 = pigment{color srgb <219,0,0>/255}    // DB0000 red
+#declare Dark1 = pigment{color srgb <0,211,0>/255}    // 00D300 green
+#declare Dark2 = pigment{color srgb <0,48,255>/255}   // 0030FF blue
+#declare Dark3 = pigment{color srgb <255,158,0>/255}  // FF9E00 yellow
 
-#declare light0 = pigment{color srgb <244,178,178>/255}  // F4B2B2
-#declare light1 = pigment{color srgb <178,241,178>/255}  // B2F1B2
-#declare light2 = pigment{color srgb <178,192,255>/255}  // B2C0FF
-#declare light3 = pigment{color srgb <255,225,178>/255}  // FFE1B2
+#declare Light0 = pigment{color srgb <244,178,178>/255}  // F4B2B2
+#declare Light1 = pigment{color srgb <178,241,178>/255}  // B2F1B2
+#declare Light2 = pigment{color srgb <178,192,255>/255}  // B2C0FF
+#declare Light3 = pigment{color srgb <255,225,178>/255}  // FFE1B2
+
+#declare Trans = 155;
+#declare Trans0 = pigment{color srgbt <219,0,0,Trans>/255}
+#declare Trans1 = pigment{color srgbt <0,211,0,Trans>/255}
+#declare Trans2 = pigment{color srgbt <0,48,255,Trans>/255}
+#declare Trans3 = pigment{color srgbt <255,158,0,Trans>/255}
+
+#declare Invis = pigment{color rgbt <1,1,1,1>}
 
 #declare Colors = array[4]{
-    array[2]{dark0, light0},
-    array[2]{dark1, light1},
-    array[2]{dark2, light2},
-    array[2]{dark3, light3}
+    array[4]{Dark0, Light0, Trans0, Invis},
+    array[4]{Dark1, Light1, Trans1, Invis},
+    array[4]{Dark2, Light2, Trans2, Invis},
+    array[4]{Dark3, Light3, Trans3, Invis}
 };
 
 // The binary entries of each CellVector correspond to the 4 spheres.
@@ -51,44 +63,38 @@
     array[4]{0, 1, 1, 1},
     array[4]{1, 1, 1, 1}
 };
-#declare CellWeights = array[16]{0, 1, 1, 2,  1, 2, 2, 3,  1, 2, 2, 3,  2, 3, 3, 4};
-#declare OffsetByWeight = array[5]{.5, 1, .5, .4, .3};  // make those with digit sum 1 much smaller
 
 
 ////////////////////// macros
 
-#macro Sphere(SphereIndex, Invert, Offset, Light)
+#macro Sphere(SphereIndex, Invert, Offset, ColorType)
+  // `ColorType` can be 0 (dark), 1 (light), 2 (transparent) and 3 (invisible)
     sphere{
         Points[SphereIndex],
         Radius + Offset
-        pigment{ Colors[SphereIndex][Light] }
         #if (Invert)
             inverse
         #end
+        pigment{ Colors[SphereIndex][ColorType] }
     }
 #end
 
-#macro SolidCell(CellIndex, Offset, Light)
+
+#macro SolidCell(CellIndex, Offset, ColorType)
     #declare CellVector = CellVectors[CellIndex];
     intersection{
         #for (SphereIndex, 0, 3)
             #if (CellVector[SphereIndex])
-                Sphere(SphereIndex, 0, -Offset, Light)  // convex
+                Sphere(SphereIndex, 0, -Offset, ColorType)  // convex
             #else
-                Sphere(SphereIndex, 1, Offset, Light)   // concave (complement)
+                Sphere(SphereIndex, 1, Offset, ColorType)   // concave (complement)
             #end
         #end
     }
 #end
 
-#macro CutCells(CellIndex, Small)
 
-    #if (Small)
-        #local Offset = OffsetByWeight[CellWeights[CellIndex]] + BeamWidth;
-    #else
-        #local Offset = CutOffset;
-    #end
-
+#macro CutCells(CellIndex)
     #declare CellVector = CellVectors[CellIndex];
     #local Triples = array[4]{
         array[3]{1, 2, 3},
@@ -96,7 +102,6 @@
         array[3]{0, 1, 3},
         array[3]{0, 1, 2}
     }
-
     union{
         #for (KeyToTriples, 0, 3)
             #local Triple = Triples[KeyToTriples];
@@ -104,33 +109,41 @@
                 #for (KeyToTriple, 0, 2)
                     #local SphereIndex = Triple[KeyToTriple];
                     #if (CellVector[SphereIndex])
-                        Sphere(SphereIndex, 0, -Offset, 1)  // convex
+                        Sphere(SphereIndex, 0, -CutOffset, 1)  // convex
                     #else
-                        Sphere(SphereIndex, 1, Offset, 1)   // concave (complement)
+                        Sphere(SphereIndex, 1, CutOffset, 1)   // concave (complement)
                     #end
                 #end
             }
         #end
     }
-
 #end
 
-#macro Cell(CellIndex, Solid, Small)
-    
-    #if (Small)
-        #local Offset = OffsetByWeight[CellWeights[CellIndex]];
-    #else
-        #local Offset = GapOffset;
-    #end
 
+#macro Cell(CellIndex, Solid)
     #if (Solid)
-        SolidCell(CellIndex, Offset, 0)
+        SolidCell(CellIndex, GapOffset, 0)
     #else
         difference{
-            SolidCell(CellIndex, Offset, 0)
-            CutCells(CellIndex, Small)
+            SolidCell(CellIndex, GapOffset, 0)
+            CutCells(CellIndex)
         }
     #end
+#end
 
+
+#declare FactorPos = 1.2684;
+#declare FactorNeg = -.6017;
+#declare TetraPoints = array[4]{<1,1,1>, <-1,-1,1>, <-1,1,-1>, <1,-1,-1>}
+
+#macro BlackSpheres(SphereRad)
+    union{
+        #for (KeyToTetraPoints, 0, 3)
+            #declare TetraPoint = TetraPoints[KeyToTetraPoints];
+            sphere{TetraPoint * FactorPos , SphereRad}
+            sphere{TetraPoint * FactorNeg , SphereRad}
+        #end
+        pigment{color srgb .2}
+    }
 #end
 

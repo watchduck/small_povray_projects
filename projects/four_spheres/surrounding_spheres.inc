@@ -18,7 +18,7 @@
             Sphere(SphereIndex, 0, .2, 1)
         #end
     }
-    object{ Cell(0, 1, 0) inverse}
+    object{ Cell(0, 1) inverse}
 }
 
 #declare SurroundingSpheres = difference{

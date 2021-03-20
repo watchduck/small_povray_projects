@@ -4,7 +4,7 @@
 #macro PutCells(CellIndices)
     #for (KeyToCellIndices, 0, dimension_size(CellIndices, 1) - 1)
         #local CellIndex = CellIndices[KeyToCellIndices];
-            Cell(CellIndex, Solid, Small)
+            Cell(CellIndex, Solid)
     #end
 #end
 
@@ -27,5 +27,6 @@
 
 
 #declare Cells = union{
-    PutCells(array[3]{11, 13, 15})
+    PutCells(array[3]{1, 2, 3})
 }
+

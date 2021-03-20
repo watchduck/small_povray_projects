@@ -124,21 +124,25 @@ Image set [Hexadecachoric group; lattice](https://commons.wikimedia.org/wiki/Cat
     <img src="img/4_spheres_as_rings.png"/>
   </a>
 <td>
-  <a href="https://commons.wikimedia.org/wiki/File:4_spheres,_weight_3,_solid.png">
-    <img src="img/4_spheres,_weight_3,_solid.png"/>
-  </a>
-<td>
   <a href="https://commons.wikimedia.org/wiki/File:4_spheres,_weight_3,_hollow.png">
     <img src="img/4_spheres,_weight_3,_hollow.png"/>
+  </a>
+<td>
+  <a href="https://commons.wikimedia.org/wiki/File:4_spheres,_triangle_01_09.png">
+    <img src="img/4_spheres,_triangle_01_09.png"/>
   </a>
 <tr>
 <td>
   <a href="projects/four_spheres/rings_colored.inc">
     <code>rings_colored.inc</code>
   </a>
-<td colspan="2">
+<td>
   <a href="projects/four_spheres/cells.inc">
     <code>cells.inc</code>
+  </a>
+<td>
+  <a href="projects/four_spheres/triangles.inc">
+    <code>triangles.inc</code>
   </a>
 </table>
 

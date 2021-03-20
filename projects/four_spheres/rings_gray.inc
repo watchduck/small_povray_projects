@@ -1,30 +1,8 @@
 #include "basics.inc"
 
 
-#declare TorusMinRad = .017;
-#declare SphereRad = .045;
-
-
-// black spheres
-
-#declare FactorPos = 1.2684;
-#declare FactorNeg = -.6017;
-#declare TetraPoints = array[4]{<1,1,1>, <-1,-1,1>, <-1,1,-1>, <1,-1,-1>}
-
-#declare BlackSpheres = union{
-    #for (KeyToTetraPoints, 0, 3)
-        #declare TetraPoint = TetraPoints[KeyToTetraPoints];
-        sphere{TetraPoint * FactorPos , SphereRad}
-        sphere{TetraPoint * FactorNeg , SphereRad}
-    #end
-    pigment{color srgb .2}
-}
-
-
-// gray tori
-
 #declare Torus = torus {
-    1.814, TorusMinRad
+    1.814, .017
     rotate -45*x
     translate x
     pigment{LightGray}
@@ -42,9 +20,8 @@
 }
 
 
-// result
-
 #declare GrayRings = union {
     object{AllTori}
-    object{BlackSpheres}
+    BlackSpheres(.045)
 }
+
