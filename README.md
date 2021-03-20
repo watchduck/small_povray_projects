@@ -162,13 +162,13 @@ Image set [Venn spheres rgby](https://commons.wikimedia.org/wiki/Category:Venn_s
   </a>
 <tr>
 <td>
-  <a href="projects/four_spheres/related/tesseract.inc">
-    <code>tesseract.inc</code>
+  <a href="projects/four_spheres/related/tesseract.pov">
+    <code>tesseract.pov</code>
   </a>
 <td>
-  <a href="projects/four_spheres/related/torus.inc">
-    <code>torus.inc</code>
+  <a href="projects/four_spheres/related/torus.pov">
+    <code>torus.pov</code>
   </a>
 </table>
 
-Image set [Tesseract torus rgby](https://commons.wikimedia.org/wiki/Category:Tesseract torus rgby)
+Image set [Tesseract torus rgby](https://commons.wikimedia.org/wiki/Category:Tesseract_torus_rgby)
