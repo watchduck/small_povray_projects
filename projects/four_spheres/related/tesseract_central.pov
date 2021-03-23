@@ -1,3 +1,5 @@
+// https://commons.wikimedia.org/wiki/File:Tesseract_Schlegel_rgby.png
+
 #include "colors.inc"
 
 #version 3.6;
@@ -102,7 +104,7 @@ union{
 
 /*
 
-povray tesseract.pov +ua +fn +W1000 +H1060
-povray tesseract.pov +ua +fn +W4000 +H4240 -D
+povray tesseract_central.pov +ua +fn +W1000 +H1060
+povray tesseract_central.pov +ua +fn +W4000 +H4240 -D
 
 */
