@@ -13,10 +13,10 @@
     object{GrayRings}
     //object{ColorRings}
 
-    object{SurroundingSpheres}
-    object{Cells}
+    //object{SurroundingSpheres}
+    //object{Cells}
 
-    //object{TriangleUnion}
+    object{Triangles}
 
 }
 
