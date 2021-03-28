@@ -6,6 +6,7 @@
 #include "rings_gray.inc"
 #include "surrounding_spheres.inc"
 #include "triangles.inc"
+#include "edges.inc"
 
 
 #declare Scene = union{
@@ -15,8 +16,8 @@
 
     //object{SurroundingSpheres}
     //object{Cells}
-
-    object{Triangles}
+    //object{Triangles}
+    //object{Edge}
 
 }
 

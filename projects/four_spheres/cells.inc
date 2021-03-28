@@ -4,7 +4,7 @@
 #macro PutCells(CellIndices)
     #for (KeyToCellIndices, 0, dimension_size(CellIndices, 1) - 1)
         #local CellIndex = CellIndices[KeyToCellIndices];
-            Cell(CellIndex, Solid)
+        Cell(CellIndex, Solid)
     #end
 #end
 

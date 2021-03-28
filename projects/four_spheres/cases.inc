@@ -1,7 +1,7 @@
 #include "RotateDirOnDir.inc"
 
 
-#declare Case = 5;
+#declare Case = 0;
 
 /*
 
