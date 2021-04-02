@@ -62,6 +62,12 @@
     array[4]{1, 1, 1, 1}
 };
 
+#declare Triples = array[4]{
+    array[3]{1, 2, 3},
+    array[3]{0, 2, 3},
+    array[3]{0, 1, 3},
+    array[3]{0, 1, 2}
+}
 
 ////////////////////// macros
 
@@ -94,12 +100,6 @@
 
 #macro CutCells(CellIndex)
     #declare CellVector = CellVectors[CellIndex];
-    #local Triples = array[4]{
-        array[3]{1, 2, 3},
-        array[3]{0, 2, 3},
-        array[3]{0, 1, 3},
-        array[3]{0, 1, 2}
-    }
     union{
         #for (KeyToTriples, 0, 3)
             #local Triple = Triples[KeyToTriples];
@@ -149,7 +149,7 @@
 
 #declare FactorPos = 1.2684;
 #declare FactorNeg = -.6017;
-#declare TetraPoints = array[4]{<1,1,1>, <-1,-1,1>, <-1,1,-1>, <1,-1,-1>}
+#declare TetraPoints = array[4]{<1,-1,-1>, <-1,-1,1>, <-1,1,-1>, <1,1,1>}
 
 #macro BlackSpheres(SphereRad)
     union{

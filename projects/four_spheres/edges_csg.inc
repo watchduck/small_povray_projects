@@ -54,7 +54,7 @@
 #declare IndexPair = IndexPairs[clock];
 
 
-#declare Edge = PutEdge(IndexPair[0], IndexPair[1])
+#declare EdgeCSG = PutEdge(IndexPair[0], IndexPair[1])
 
 
 /*
