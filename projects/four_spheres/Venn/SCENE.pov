@@ -8,6 +8,7 @@
 #include "triangles.inc"
 #include "edges_csg.inc"
 #include "edges_round.inc"
+#include "text.inc"
 
 
 #declare Scene = union{
@@ -20,6 +21,7 @@
     //object{Triangles}
     //object{EdgeCSG}
     //object{EdgeRound}
+    //object{Text}
 
 }
 
