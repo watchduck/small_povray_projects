@@ -1,4 +1,4 @@
-// https://commons.wikimedia.org/wiki/Category:Studies_of_Euler_diagrams;_4-ary_22527;_crosses
+// https://commons.wikimedia.org/wiki/Category:Studies_of_Euler_diagrams;_medusa_3D_crosses
 
 #include "colors.inc"
 #include "math.inc"
@@ -23,21 +23,20 @@ light_source{ <-400, 500, -300>*.3 color White shadowless}
 light_source{ Camera_Position  color rgb<0.9,0.9,1>*0.1 shadowless}
 sky_sphere{ pigment{ White } }
 
-/////////////////////////////
+///////////////////////////// variables
 
 #declare Invisible = pigment{color rgbt 1};
 #declare LightTransGray = pigment{color rgbt <.9, .9, .9, .8>};
 #declare DarkTransGray = pigment{color rgbt .6};
 #declare SolidGray = pigment{color srgb .9};
 
-#declare Case = "cells";  // "overview" or "cells"
-#if (Case = "overview")
-    #declare Trans = 100;
-    #declare CutColor = Invisible;
-#end
-#if (Case = "cells")
+#declare CaseCells = 1;  // single cells (requires adjusting 'inverse' in ColoredPlanes)
+#if (CaseCells)
     #declare Trans = 10;
     #declare CutColor = DarkTransGray;
+#else
+    #declare Trans = 100;
+    #declare CutColor = Invisible;
 #end
 
 #declare Colors = array[4]{
@@ -185,21 +184,25 @@ sky_sphere{ pigment{ White } }
     object{ PlanesArray[Index]  pigment{Color} }
 #end
 
-// unions
+// compounds of planes
 #declare GrayPlanes = union{
     PlaneMacro(0, 0)
     PlaneMacro(1, 0)
     PlaneMacro(2, 0)
     PlaneMacro(3, 0)
 }
-#declare ColoredPlanes = intersection{
-    object{PlaneMacro(0, 1) }
-    object{PlaneMacro(1, 1) inverse}
-    object{PlaneMacro(2, 1) inverse}
-    object{PlaneMacro(3, 1) }
+#if (CaseCells)
+    #declare ColoredPlanes = intersection{
+#else
+    #declare ColoredPlanes = union{
+#end
+        object{PlaneMacro(0, 1) }
+        object{PlaneMacro(1, 1) inverse}
+        object{PlaneMacro(2, 1) inverse}
+        object{PlaneMacro(3, 1) }
 }
 
-/////////////////////////////
+///////////////////////////// show
 
 #declare CutBoxA = box{<-2.5,-3,-3>, <5,3,3>}
 #declare CutBoxB = box{<-2.501,-3.001,-3.001>, <5.001,3.001,3.001>}
@@ -207,10 +210,12 @@ sky_sphere{ pigment{ White } }
 
 union{
 
-    intersection{
-        object{GrayPlanes}
-        object{CutBoxA  pigment{Invisible}}
-    }
+    #if (CaseCells)
+        intersection{
+            object{GrayPlanes}
+            object{CutBoxA  pigment{Invisible}}
+        }
+    #end
 
     intersection{
         object{ColoredPlanes}
@@ -221,8 +226,10 @@ union{
         object{Axes}
         object{CutBoxC  pigment{SolidGray}}
     }
-
-    //object{Text}
+    
+    #if (!CaseCells)
+        object{Text}
+    #end
 
     rotate -24.5*y
     translate -2*x
@@ -231,7 +238,19 @@ union{
 
 
 /*
-povray crosses.pov +ua +fn +W1000 +H830
-povray crosses.pov +ua +fn +W4000 +H3320 -D
+povray medusa_crosses.pov +ua +fn +W1000 +H830
+povray medusa_crosses.pov +ua +fn +W4000 +H3320 -D
+
+Adaptations for sets and hypersplits:
+  CaseCells = 0
+  leave only the relevant color plane(s)
+  comment out the corresponding gray plane(s)
+
+Hypersplits:
+  Trans = 70
+
+Sets:
+  Trans = 10 (almost solid)
+  Trans 100 for (manually copied) color of CutBoxB
 */
 

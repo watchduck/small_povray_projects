@@ -1,4 +1,4 @@
-// https://commons.wikimedia.org/wiki/Category:Studies_of_Euler_diagrams;_4-ary_22527;_spheres
+// https://commons.wikimedia.org/wiki/Category:Studies_of_Euler_diagrams;_medusa_3D_spheres
 
 #include "colors.inc"
 #include "math.inc"
@@ -178,7 +178,7 @@ object{RepeatedText}
 
 /*
 
-povray chain.pov +ua +fn +W1000 +H560
-povray chain.pov +ua +fn +W4000 +H2240 -D
+povray medusa_spheres.pov +ua +fn +W1000 +H560
+povray medusa_spheres.pov +ua +fn +W4000 +H2240 -D
 
 */
